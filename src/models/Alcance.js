@@ -3,8 +3,8 @@ import { sequelize } from "../config/database.js"
 import { Cuenta } from "./Cuenta.js"
 import { Jugador } from "./Jugador.js"
 
-export const Pliometria = sequelize.define(
-  "pliometrias",
+export const Alcance = sequelize.define(
+  "alcances",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -19,26 +19,33 @@ export const Pliometria = sequelize.define(
         key: "id",
       },
     },
+    tiempodevuelo: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+      validate: {
+        min: 0,
+      },
+    },
+    velocidad: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+      validate: {
+        min: 0,
+      },
+    },
+    potencia: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+      validate: {
+        min: 0,
+      },
+    },
     fecha: {
       type: DataTypes.DATEONLY,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    extensionizquierda: {
-      type: DataTypes.FLOAT,
-      allowNull: true,
-      validate: {
-        min: 0,
-      },
-    },
-    extensionderecha: {
-      type: DataTypes.FLOAT,
-      allowNull: true,
-      validate: {
-        min: 0,
-      },
-    },
-    movimiento: {
+    alcance: {
       type: DataTypes.FLOAT,
       allowNull: true,
       validate: {
@@ -52,11 +59,11 @@ export const Pliometria = sequelize.define(
     },
   },
   {
-    tableName: "pliometrias",
+    tableName: "alcances",
     timestamps: true,
   },
 )
 
 // Relaciones
-Pliometria.belongsTo(Cuenta, { foreignKey: "idUser", as: "cuenta" })
-Pliometria.belongsTo(Jugador, { foreignKey: "idUser", as: "jugador" })
+Alcance.belongsTo(Cuenta, { foreignKey: "idUser", as: "cuenta" })
+Alcance.belongsTo(Jugador, { foreignKey: "idUser", as: "jugador" })
