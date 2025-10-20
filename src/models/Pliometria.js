@@ -57,3 +57,4 @@ export const Pliometria = sequelize.define(
   },
 )
 
+//fdd
