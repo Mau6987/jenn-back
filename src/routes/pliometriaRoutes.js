@@ -8,7 +8,7 @@ import {
   obtenerPliometriasPorUsuario,
   actualizarPliometria,
   eliminarPliometria,
-} from "../controllers/pliometriaController.js"
+} from "../controllers/PliometriaController.js"
 
 const router = express.Router()
 
