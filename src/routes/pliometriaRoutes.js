@@ -1,36 +1,26 @@
-// routes/pliometriaRoutes.js
-import express from "express";
+import express from "express"
 import {
-  crearPliometria,
   iniciarPliometria,
   finalizarPliometria,
+  crearPliometria,
   obtenerPliometrias,
-  obtenerPliometria,
+  obtenerPliometriaPorId,
+  obtenerPliometriasPorUsuario,
   actualizarPliometria,
-  eliminarPliometria
-} from "../controllers/PliometriaController.js";
+  eliminarPliometria,
+} from "../controllers/pliometriaController.js"
 
-const router = express.Router();
+const router = express.Router()
 
-// Crear nuevo registro de pliometría
-router.post("/", crearPliometria);
+router.post("/iniciar", iniciarPliometria)
+router.put("/finalizar/:id", finalizarPliometria)
 
-// Iniciar pliometría (genera registro con valores por defecto)
-router.post("/iniciar", iniciarPliometria);
+// Rutas CRUD para Pliometría
+router.post("/", crearPliometria)
+router.get("/", obtenerPliometrias)
+router.get("/:id", obtenerPliometriaPorId)
+router.get("/usuario/:idUser", obtenerPliometriasPorUsuario)
+router.put("/:id", actualizarPliometria)
+router.delete("/:id", eliminarPliometria)
 
-// Finalizar pliometría (actualiza valores)
-router.put("/finalizar/:id", finalizarPliometria);
-
-// Obtener todos los registros
-router.get("/", obtenerPliometrias);
-
-// Obtener un registro por ID
-router.get("/:id", obtenerPliometria);
-
-// Actualizar un registro existente
-router.put("/:id", actualizarPliometria);
-
-// Eliminar un registro
-router.delete("/:id", eliminarPliometria);
-
-export default router;
+export default router

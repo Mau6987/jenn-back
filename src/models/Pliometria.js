@@ -57,6 +57,3 @@ export const Pliometria = sequelize.define(
   },
 )
 
-// Relaciones
-Pliometria.belongsTo(Cuenta, { foreignKey: "idUser", as: "cuenta" })
-Pliometria.belongsTo(Jugador, { foreignKey: "idUser", as: "jugador" })

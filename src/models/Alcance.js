@@ -64,6 +64,3 @@ export const Alcance = sequelize.define(
   },
 )
 
-// Relaciones
-Alcance.belongsTo(Cuenta, { foreignKey: "idUser", as: "cuenta" })
-Alcance.belongsTo(Jugador, { foreignKey: "idUser", as: "jugador" })
